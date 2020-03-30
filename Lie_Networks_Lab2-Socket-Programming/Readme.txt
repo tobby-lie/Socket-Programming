@@ -77,14 +77,13 @@ A client-server interaction of two programs.
 2. Build the program.
 
     Make sure you're in the top level directory -- Lie_Networks_Lab2-Socket-Programming
-    Compile the program by (this will run makefiles for both client and server):
-
+    Compile the program by (this will run makefiles for both client and server)
     % make
 
 3. Run the client by (can run multiple clients by ssh in multiple windows):
 
    % cd Lie_Networks_Lab2-Socket-Programming/3761_Lab2_client
-   % ./client
+   % ./client [server hostname]
 
    Run the server by:
 
