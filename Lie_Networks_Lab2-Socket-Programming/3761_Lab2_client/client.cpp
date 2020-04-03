@@ -137,6 +137,8 @@ std::string menu()
     std::cout << "* spwd                                        *" << std::endl;
     std::cout << "* download [source-filename] [dest-filename]  *" << std::endl;
     std::cout << "* upload [source-filename] [dest-filename]    *" << std::endl;
+    std::cout << "* ls                                          *" << std::endl;
+    std::cout << "* pwd                                         *" << std::endl;
     std::cout << "* bye                                         *" << std::endl;
     std::cout << "***********************************************" << std::endl;
     
@@ -186,6 +188,18 @@ std::string menu()
     
         return return_string;
     } // end else if
+    else if (split_command[0] == "ls")
+    {
+        printf("* client available files \n \n");
+        system("ls");
+        return "-2";
+    }
+    else if (split_command[0] == "pwd")
+    {
+        printf("* client working directory \n \n");
+        system("pwd");
+        return "-2";
+    }
     else if (split_command[0] == "bye") // bye
     {
         return "3 bye"; // return bye with prefix
@@ -250,6 +264,11 @@ int main(int argc, char *argv[])
         {
             printf("*client: Invalid input please try again! \n \n");
             continue; // go back to beginning of loop
+        } // end if
+        
+        if(split_message[0] == "-2") // system commmand for client side only
+        {
+            continue; // no need to execute anything here
         } // end if
         
         if (send(sockfd, message.c_str(), MAXDATASIZE-1, 0) == -1) // send request to server
